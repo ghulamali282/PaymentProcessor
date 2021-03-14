@@ -15,5 +15,6 @@ namespace PaymentProcessor.Domain.Payments
         public DateTime ExpirationDate { get; set; }
         public string SecurityCode { get; set; }
         public decimal Amount { get; set; }
+
     }
 }

@@ -4,4 +4,8 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PaymentProcessor.Domain.Shared\PaymentProcessor.Domain.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

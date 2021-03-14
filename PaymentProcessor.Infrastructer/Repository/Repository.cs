@@ -18,5 +18,10 @@ namespace PaymentProcessor.Infrastructer.Repository
         {
            await  _entities.AddRangeAsync(entity);
         }
+
+        public async Task SaveAsync()
+        {
+           await  _context.SaveChangesAsync();
+        }
     }
 }

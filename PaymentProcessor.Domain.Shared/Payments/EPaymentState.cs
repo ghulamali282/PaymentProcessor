@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PaymentProcessor.Application.Shared.Common
+namespace PaymentProcessor.Domain.Shared.Payments
 {
-    public interface ITransientDependency
+    public enum EPaymentState
     {
+        Pending,
+        Processed,
+        Failed
     }
 }

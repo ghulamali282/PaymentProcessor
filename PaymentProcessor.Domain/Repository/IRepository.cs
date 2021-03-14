@@ -9,5 +9,6 @@ namespace PaymentProcessor.Domain.Repository
     public interface IRepository<TEntity> where TEntity:class
     {
         Task InsertAsync(TEntity entity);
+        Task SaveAsync();
     }
 }

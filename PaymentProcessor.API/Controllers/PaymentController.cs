@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PaymentProcessor.Application.Shared.Payments;
 using PaymentProcessor.Application.Shared.Payments.Dto;
 using System;
 using System.Collections.Generic;
@@ -8,22 +9,21 @@ using System.Threading.Tasks;
 
 namespace PaymentProcessor.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
     public class PaymentController : ControllerBase
     {
+        private readonly IPaymentService _paymentService;
+        public PaymentController(IPaymentService paymentService)
+        {
+            _paymentService = paymentService;
+        }
       
         [HttpPost]
         public async Task<IActionResult> ProcessPayment([FromBody] PaymentDto input)
-        {
-            if (!ModelState.IsValid)
-            {
-                return new BadRequestResult();
-            }
-
-
-
-            return Ok(string.Empty);
+        {           
+            await _paymentService.ProcessPayment(input);
+            return Ok("Processed");
         }
 
     }

@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Application\PaymentProcessor.Application.csproj" />
     <ProjectReference Include="..\PaymentProcessor.Application.Shared\PaymentProcessor.Application.Shared.csproj" />
     <ProjectReference Include="..\PaymentProcessor.Infrastructer\PaymentProcessor.Infrastructer.csproj" />
   </ItemGroup>
