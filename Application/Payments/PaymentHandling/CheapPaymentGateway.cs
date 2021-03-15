@@ -21,6 +21,9 @@ namespace PaymentProcessor.Application.Payments.PaymentHandling
 
         protected override bool ProcessPayment(Payment payment)
         {
+            //Payment processing logic goes here
+            //In real world it will return response from the gateway. Returning bool for now.
+
             return true;
         }
     }

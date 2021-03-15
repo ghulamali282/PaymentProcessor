@@ -5,10 +5,6 @@ using PaymentProcessor.Application.Shared.Payments.Dto;
 using PaymentProcessor.Domain.Payments;
 using PaymentProcessor.Domain.Repository;
 using PaymentProcessor.Domain.Shared.Payments;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PaymentProcessor.Application.Payments
@@ -33,14 +29,14 @@ namespace PaymentProcessor.Application.Payments
 
             var cheapPaymentGateway = new CheapPaymentGateway();
             var expensivePaymentGateway = new ExpensivePaymentGateway();
+            var premiumPaymentGateway = new PremiumPaymentGateway();
 
-            cheapPaymentGateway.SetNext(expensivePaymentGateway);
+            cheapPaymentGateway.SetNext(expensivePaymentGateway).SetNext(premiumPaymentGateway);
 
+            var response = (bool?)cheapPaymentGateway.Handle(payment);
 
             await _paymentRepository.InsertAsync(payment);
             await _paymentRepository.SaveAsync();
-
-            var response =(bool?)cheapPaymentGateway.Handle(payment);
 
             var paymentState = new PaymentState
             {

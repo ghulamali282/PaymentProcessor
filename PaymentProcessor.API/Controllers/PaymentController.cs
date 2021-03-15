@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PaymentProcessor.API.Controllers
 {
-    [Route("api/[controller]/[Action]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class PaymentController : ControllerBase
     {
@@ -20,6 +20,7 @@ namespace PaymentProcessor.API.Controllers
         }
       
         [HttpPost]
+        [Route("process-payment")]
         public async Task<IActionResult> ProcessPayment([FromBody] PaymentDto input)
         {           
             await _paymentService.ProcessPayment(input);
